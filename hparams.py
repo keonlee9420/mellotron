@@ -1,15 +1,15 @@
-import tensorflow as tf
+from easydict import EasyDict as edict
 from text.symbols import symbols
 
 
 def create_hparams(hparams_string=None, verbose=False):
     """Create model hyperparameters. Parse nondefault from given string."""
 
-    hparams = tf.contrib.training.HParams(
+    hparams = edict(
         ################################
         # Experiment Parameters        #
         ################################
-        epochs=50000,
+        epochs=500000,
         iters_per_checkpoint=500,
         seed=1234,
         dynamic_loss_scaling=True,
@@ -24,8 +24,8 @@ def create_hparams(hparams_string=None, verbose=False):
         ################################
         # Data Parameters             #
         ################################
-        training_files='filelists/ljs_audiopaths_text_sid_train_filelist.txt',
-        validation_files='filelists/ljs_audiopaths_text_sid_val_filelist.txt',
+        training_files='filelists/vctk_filelist_train_skipped.txt',
+        validation_files='filelists/vctk_filelist_val_skipped.txt',
         text_cleaners=['english_cleaners'],
         p_arpabet=1.0,
         cmudict_path="data/cmu_dictionary",
@@ -41,8 +41,8 @@ def create_hparams(hparams_string=None, verbose=False):
         n_mel_channels=80,
         mel_fmin=0.0,
         mel_fmax=8000.0,
-        f0_min=80,
-        f0_max=880,
+        f0_min=71.0,
+        f0_max=800.0,
         harm_thresh=0.25,
 
         ################################
@@ -110,16 +110,9 @@ def create_hparams(hparams_string=None, verbose=False):
         learning_rate_anneal=50000,
         weight_decay=1e-6,
         grad_clip_thresh=1.0,
-        batch_size=32,
+        batch_size=16,
         mask_padding=True,  # set model's padded outputs to padded values
 
     )
-
-    if hparams_string:
-        tf.compat.v1.logging.info('Parsing command line hparams: %s', hparams_string)
-        hparams.parse(hparams_string)
-
-    if verbose:
-        tf.compat.v1.logging.info('Final parsed hparams: %s', hparams.values())
 
     return hparams

@@ -38,3 +38,7 @@ def to_gpu(x):
     if torch.cuda.is_available():
         x = x.cuda(non_blocking=True)
     return torch.autograd.Variable(x)
+
+def get_param_num(model):
+    num_param = sum(param.numel() for param in model.parameters())
+    return num_param

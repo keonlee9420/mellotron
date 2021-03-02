@@ -15,6 +15,7 @@ from data_utils import TextMelLoader, TextMelCollate
 from loss_function import Tacotron2Loss
 from logger import Tacotron2Logger
 from hparams import create_hparams
+from utils import get_param_num
 
 
 def reduce_tensor(tensor, n_gpus):
@@ -117,7 +118,6 @@ def validate(model, criterion, valset, iteration, batch_size, n_gpus,
         val_loader = DataLoader(valset, sampler=val_sampler, num_workers=1,
                                 shuffle=False, batch_size=batch_size,
                                 pin_memory=False, collate_fn=collate_fn)
-
         val_loss = 0.0
         for i, batch in enumerate(val_loader):
             x, y = model.parse_batch(batch)
@@ -189,6 +189,8 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
                 learning_rate = _learning_rate
             iteration += 1  # next iteration is iteration + 1
             epoch_offset = max(0, int(iteration / len(train_loader)))
+
+    print(f'Model Parameters: {get_param_num(model)}')
 
     model.train()
     is_overflow = False
