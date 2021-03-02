@@ -77,8 +77,8 @@ def warm_start_model(checkpoint_path, model, ignore_layers):
     print("Warm starting model from checkpoint '{}'".format(checkpoint_path))
     checkpoint_dict = torch.load(checkpoint_path, map_location='cpu')
     model_dict = checkpoint_dict['state_dict']
-    print(model_dict['embedding.weight'])
-    model_dict['embedding.weight'] = model_dict['embedding.weight'].expand(hparams.n_symbols, -1)
+    print(model_dict['embedding.weight'].size())
+    model_dict['embedding.weight'] = model_dict['embedding.weight'].expand_as(model.state_dict()['embedding.weight'])
     if len(ignore_layers) > 0:
         model_dict = {k: v for k, v in model_dict.items()
                       if k not in ignore_layers}
@@ -93,8 +93,6 @@ def load_checkpoint(checkpoint_path, model, optimizer):
     assert os.path.isfile(checkpoint_path)
     print("Loading checkpoint '{}'".format(checkpoint_path))
     checkpoint_dict = torch.load(checkpoint_path, map_location='cpu')
-    print(checkpoint_dict['state_dict']['embedding.weight'])
-    checkpoint_dict['state_dict']['embedding.weight'] = checkpoint_dict['state_dict']['embedding.weight'].expand(hparams.n_symbols, -1)
     model.load_state_dict(checkpoint_dict['state_dict'])
     optimizer.load_state_dict(checkpoint_dict['optimizer'])
     learning_rate = checkpoint_dict['learning_rate']
