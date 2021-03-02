@@ -91,6 +91,8 @@ def load_checkpoint(checkpoint_path, model, optimizer):
     assert os.path.isfile(checkpoint_path)
     print("Loading checkpoint '{}'".format(checkpoint_path))
     checkpoint_dict = torch.load(checkpoint_path, map_location='cpu')
+    print(checkpoint_dict['state_dict']['embedding.weight'])
+    checkpoint_dict['state_dict']['embedding.weight'] = checkpoint_dict['state_dict']['embedding.weight'].expand(hparams.n_symbols, -1)
     model.load_state_dict(checkpoint_dict['state_dict'])
     optimizer.load_state_dict(checkpoint_dict['optimizer'])
     learning_rate = checkpoint_dict['learning_rate']
