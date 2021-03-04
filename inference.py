@@ -1,20 +1,23 @@
-import matplotlib.pyplot as plt
-
-from itertools import cycle
+import os
 import numpy as np
-import scipy as sp
-from scipy.io.wavfile import write
-import pandas as pd
+import scipy.io.wavfile as wavfile
 import librosa
 import torch
+import hifigan
+import json
 
 from hparams import create_hparams
 from model import load_model
-from waveglow.denoiser import Denoiser
 from layers import TacotronSTFT
 from data_utils import TextMelLoader, TextMelCollate
 from text import cmudict, text_to_sequence
-from mellotron_utils import get_data_from_musicxml
+from data.sentences import sentences
+
+hparams = create_hparams()
+
+stft = TacotronSTFT(hparams.filter_length, hparams.hop_length, hparams.win_length,
+                    hparams.n_mel_channels, hparams.sampling_rate, hparams.mel_fmin,
+                    hparams.mel_fmax)
 
 def panner(signal, angle):
     angle = np.radians(angle)
@@ -35,106 +38,79 @@ def load_mel(path):
     melspec = melspec.cuda()
     return melspec
 
+def get_vocoder():
+    with open("hifigan/config.json", "r") as f:
+        config = json.load(f)
+    config = hifigan.AttrDict(config)
+    vocoder = hifigan.Generator(config)
+    ckpt = torch.load("hifigan/generator_universal.pth.tar")
+    vocoder.load_state_dict(ckpt["generator"])
+    vocoder.eval()
+    vocoder.remove_weight_norm()
+    vocoder.cuda()
 
-hparams = create_hparams()
-
-stft = TacotronSTFT(hparams.filter_length, hparams.hop_length, hparams.win_length,
-                    hparams.n_mel_channels, hparams.sampling_rate, hparams.mel_fmin,
-                    hparams.mel_fmax)
-
-checkpoint_path = "models/mellotron_libritts.pt"
-mellotron = load_model(hparams).cuda().eval()
-mellotron.load_state_dict(torch.load(checkpoint_path)['state_dict'])
-
-waveglow_path = 'models/waveglow_256channels_v4.pt'
-waveglow = torch.load(waveglow_path)['model'].cuda().eval()
-denoiser = Denoiser(waveglow).cuda().eval()
-
-arpabet_dict = cmudict.CMUDict('data/cmu_dictionary')
-audio_paths = 'data/examples_filelist.txt'
-dataloader = TextMelLoader(audio_paths, hparams)
-datacollate = TextMelCollate(1)
-
-file_idx = 0
-audio_path, text, sid = dataloader.audiopaths_and_text[file_idx]
-
-# get audio path, encoded text, pitch contour and mel for gst
-text_encoded = torch.LongTensor(text_to_sequence(text, hparams.text_cleaners, arpabet_dict))[None, :].cuda()
-pitch_contour = dataloader[file_idx][3][None].cuda()
-mel = load_mel(audio_path)
-print(audio_path, text)
-
-# load source data to obtain rhythm using tacotron 2 as a forced aligner
-x, y = mellotron.parse_batch(datacollate([dataloader[file_idx]]))
-
-ipd.Audio(audio_path, rate=hparams.sampling_rate)
-
-speaker_ids = TextMelLoader(
-    "filelists/libritts_train_clean_100_audiopath_text_sid_shorterthan10s_atleast5min_train_filelist.txt",
-    hparams).speaker_ids
-speakers = pd.read_csv('filelists/libritts_speakerinfo.txt', engine='python', header=None, comment=';', sep=' *\| *',
-                       names=['ID', 'SEX', 'SUBSET', 'MINUTES', 'NAME'])
-speakers['MELLOTRON_ID'] = speakers['ID'].apply(lambda x: speaker_ids[x] if x in speaker_ids else -1)
-female_speakers = cycle(
-    speakers.query("SEX == 'F' and MINUTES > 20 and MELLOTRON_ID >= 0")['MELLOTRON_ID'].sample(frac=1).tolist())
-male_speakers = cycle(
-    speakers.query("SEX == 'M' and MINUTES > 20 and MELLOTRON_ID >= 0")['MELLOTRON_ID'].sample(frac=1).tolist())
+    return vocoder
 
 
-with torch.no_grad():
-    # get rhythm (alignment map) using tacotron 2
-    mel_outputs, mel_outputs_postnet, gate_outputs, rhythm = mellotron.forward(x)
-    rhythm = rhythm.permute(1, 0, 2)
+def vocoder_infer(mel, vocoder, path):
+    wav = vocoder(mel).squeeze(1)
 
-speaker_id = next(female_speakers) if np.random.randint(2) else next(male_speakers)
-speaker_id = torch.LongTensor([speaker_id]).cuda()
+    wav = (
+        wav.squeeze().cpu().numpy()
+        * hparams.max_wav_value
+    ).astype("int16")
 
-with torch.no_grad():
-    mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference_noattention(
-        (text_encoded, mel, speaker_id, pitch_contour, rhythm))
+    wavfile.write(path, hparams.sampling_rate, wav)
 
-plot_mel_f0_alignment(x[2].data.cpu().numpy()[0],
-                      mel_outputs_postnet.data.cpu().numpy()[0],
-                      pitch_contour.data.cpu().numpy()[0, 0],
-                      rhythm.data.cpu().numpy()[:, 0].T)
+    return wav
 
 
-with torch.no_grad():
-    audio = denoiser(waveglow.infer(mel_outputs_postnet, sigma=0.8), 0.01)[:, 0]
-ipd.Audio(audio[0].data.cpu().numpy(), rate=hparams.sampling_rate)
+def inference(dirname):
+    # 멜로트론 로딩
+    checkpoint_path = "models/checkpoint_171000"
+    mellotron = load_model(hparams).cuda().eval()
+    mellotron.load_state_dict(torch.load(checkpoint_path)['state_dict'])
 
+    # 보코더 로딩
+    vocoder = get_vocoder()
 
-data = get_data_from_musicxml('data/haendel_hallelujah.musicxml', 132, convert_stress=True)
-panning = {'Soprano': [-60, -30], 'Alto': [-40, -10], 'Tenor': [30, 60], 'Bass': [10, 40]}
+    # 오디오 filelist 로딩
+    arpabet_dict = cmudict.CMUDict('data/cmu_dictionary')
+    audio_paths = f'data/{dirname}.txt'
+    dataloader = TextMelLoader(audio_paths, hparams)
+    datacollate = TextMelCollate(1)
+    os.makedirs(f'sample/{dirname}')
 
-n_speakers_per_part = 4
-frequency_scaling = 0.4
-n_seconds = 90
-audio_stereo = np.zeros((hparams.sampling_rate * n_seconds, 2), dtype=np.float32)
-for i, (part, v) in enumerate(data.items()):
-    rhythm = data[part]['rhythm'].cuda()
-    pitch_contour = data[part]['pitch_contour'].cuda()
-    text_encoded = data[part]['text_encoded'].cuda()
+    for sent_txt in sentences:
+        for file_idx in range(len(dataloader)):
+            audio_path, text, sid = dataloader.audiopaths_and_text[file_idx]
+            text = sent_txt
 
-    for k in range(n_speakers_per_part):
-        pan = np.random.randint(panning[part][0], panning[part][1])
-        if any(x in part.lower() for x in ('soprano', 'alto', 'female')):
-            speaker_id = torch.LongTensor([next(female_speakers)]).cuda()
-        else:
-            speaker_id = torch.LongTensor([next(male_speakers)]).cuda()
-        print("{} MellotronID {} pan {}".format(part, speaker_id.item(), pan))
+            # get audio path, encoded text, pitch contour and mel for gst
+            text_encoded = torch.LongTensor(text_to_sequence(text, hparams.text_cleaners, arpabet_dict))[None, :].cuda()
+            pitch_contour = dataloader[file_idx][3][None].cuda()
+            mel = load_mel(audio_path)
+            print(audio_path, text)
 
-        with torch.no_grad():
-            mel_outputs, mel_outputs_postnet, gate_outputs, alignments_transfer = mellotron.inference_noattention(
-                (text_encoded, mel, speaker_id, pitch_contour * frequency_scaling, rhythm))
+            # load source data to obtain rhythm using tacotron 2 as a forced aligner
+            x, y = mellotron.parse_batch(datacollate([dataloader.get_data((audio_path, text, sid))]))
 
-            audio = denoiser(waveglow.infer(mel_outputs_postnet, sigma=0.8), 0.01)[0, 0]
-            audio = audio.cpu().numpy()
-            audio = panner(audio, pan)
-            audio_stereo[:audio.shape[0]] += audio
-            write("{} {}.wav".format(part, speaker_id.item()), hparams.sampling_rate, audio)
+            # 스피커 id
+            speaker_id = torch.LongTensor([int(sid)]).cuda()
 
+            # 멜로트론 합성
+            with torch.no_grad():
+                # get rhythm (alignment map) using tacotron 2
+                mel_outputs, mel_outputs_postnet, gate_outputs, rhythm = mellotron.forward(x)
+                rhythm = rhythm.permute(1, 0, 2)
 
-audio_stereo = audio_stereo / np.max(np.abs(audio_stereo))
-write("audio_stereo.wav", hparams.sampling_rate, audio_stereo)
-ipd.Audio([audio_stereo[:, 0], audio_stereo[:, 1]], rate=hparams.sampling_rate)
+                mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference_noattention(
+                    (text_encoded, mel, speaker_id, pitch_contour, rhythm))
+
+                # wav 합성
+                sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text}.wav'
+                vocoder_infer(mel_outputs_postnet, vocoder, f'sample/{dirname}/{sample_name}')
+
+if __name__ == '__main__':
+    inference('VCTK_val_reference')
+    inference('VCTK_val_reference_noisy')
