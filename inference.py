@@ -79,7 +79,7 @@ def inference(dirname):
     audio_paths = f'data/{dirname}.txt'
     dataloader = TextMelLoader(audio_paths, hparams)
     datacollate = TextMelCollate(1)
-    os.makedirs(f'sample/{dirname}')
+    os.makedirs(f'sample/{dirname}', exist_ok=True)
 
     for sent_txt in sentences:
         for file_idx in range(len(dataloader)):
@@ -104,8 +104,10 @@ def inference(dirname):
                 mel_outputs, mel_outputs_postnet, gate_outputs, rhythm = mellotron.forward(x)
                 rhythm = rhythm.permute(1, 0, 2)
 
-                mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference_noattention(
-                    (text_encoded, mel, speaker_id, pitch_contour, rhythm))
+                # mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference_noattention(
+                #     (text_encoded, mel, speaker_id, pitch_contour, rhythm))
+                mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference(
+                    (text_encoded, mel, speaker_id, pitch_contour))
 
                 # wav 합성
                 sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text}.wav'
