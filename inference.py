@@ -65,9 +65,8 @@ def vocoder_infer(mel, vocoder, path):
     return wav
 
 
-def inference(dirname):
+def inference(dirname, outdir, checkpoint_path):
     # 멜로트론 로딩
-    checkpoint_path = "models/checkpoint_171000"
     mellotron = load_model(hparams).cuda().eval()
     mellotron.load_state_dict(torch.load(checkpoint_path)['state_dict'])
 
@@ -78,8 +77,13 @@ def inference(dirname):
     arpabet_dict = cmudict.CMUDict('data/cmu_dictionary')
     audio_paths = f'data/{dirname}.txt'
     dataloader = TextMelLoader(audio_paths, hparams)
-    datacollate = TextMelCollate(1)
-    os.makedirs(f'sample/{dirname}', exist_ok=True)
+    os.makedirs(f'{outdir}/{dirname}', exist_ok=True)
+
+    with open('data/VCTK/speaker-info.txt') as f:
+        speaker_lines = f.readlines()[1:]
+
+    speakers = [l.split()[0].strip() for l in speaker_lines]
+    new_filelist = []
 
     for sent_txt in sentences:
         for file_idx in range(len(dataloader)):
@@ -92,27 +96,88 @@ def inference(dirname):
             mel = load_mel(audio_path)
             print(audio_path, text)
 
-            # load source data to obtain rhythm using tacotron 2 as a forced aligner
-            x, y = mellotron.parse_batch(datacollate([dataloader.get_data((audio_path, text, sid))]))
-
             # 스피커 id
-            speaker_id = torch.LongTensor([int(sid)]).cuda()
+            speaker_name = os.path.basename(audio_path).split('_')[1]
+            speaker_id = speakers.index(speaker_name)
+            sid = int(sid)
+            # print(sid, speaker_id)
+            speaker_id = torch.LongTensor([sid]).cuda()
 
             # 멜로트론 합성
             with torch.no_grad():
-                # get rhythm (alignment map) using tacotron 2
-                mel_outputs, mel_outputs_postnet, gate_outputs, rhythm = mellotron.forward(x)
-                rhythm = rhythm.permute(1, 0, 2)
-
-                # mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference_noattention(
-                #     (text_encoded, mel, speaker_id, pitch_contour, rhythm))
                 mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference(
                     (text_encoded, mel, speaker_id, pitch_contour))
 
                 # wav 합성
                 sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text}.wav'
-                vocoder_infer(mel_outputs_postnet, vocoder, f'sample/{dirname}/{sample_name}')
+                vocoder_infer(mel_outputs_postnet, vocoder, f'{outdir}/{dirname}/{sample_name}')
+
+            new_filelist.append(f'{outdir}/{dirname}/{sample_name}\n')
+
+    with open(f'{outdir}/{dirname}.txt', 'w') as f:
+        f.writelines(new_filelist)
+
+def inference_parallel(dirname, outdir, checkpoint_path):
+    # 멜로트론 로딩
+    mellotron = load_model(hparams).cuda().eval()
+    mellotron.load_state_dict(torch.load(checkpoint_path)['state_dict'])
+
+    # 보코더 로딩
+    vocoder = get_vocoder()
+
+    # 오디오 filelist 로딩
+    arpabet_dict = cmudict.CMUDict('data/cmu_dictionary')
+    audio_paths = f'data/{dirname}.txt'
+    dataloader = TextMelLoader(audio_paths, hparams)
+    os.makedirs(f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}', exist_ok=True)
+
+    with open('data/VCTK/speaker-info.txt') as f:
+        speaker_lines = f.readlines()[1:]
+
+    speakers = [l.split()[0].strip() for l in speaker_lines]
+    new_filelist = []
+
+    for file_idx in range(len(dataloader)):
+        audio_path, text, sid = dataloader.audiopaths_and_text[file_idx]
+
+        # get audio path, encoded text, pitch contour and mel for gst
+        text_encoded = torch.LongTensor(text_to_sequence(text, hparams.text_cleaners, arpabet_dict))[None, :].cuda()
+        pitch_contour = dataloader[file_idx][3][None].cuda()
+        mel = load_mel(audio_path)
+        print(audio_path, text)
+
+        # 스피커 id
+        speaker_name = os.path.basename(audio_path).split('_')[1]
+        speaker_id = speakers.index(speaker_name)
+        sid = int(sid)
+        # print(sid, speaker_id)
+        speaker_id = torch.LongTensor([sid]).cuda()
+
+        # 멜로트론 합성
+        with torch.no_grad():
+            mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference(
+                (text_encoded, mel, speaker_id, pitch_contour))
+
+            # wav 합성
+            sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text}.wav'
+            vocoder_infer(mel_outputs_postnet, vocoder,
+                          f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}/{sample_name}')
+
+        new_filelist.append(f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}/{sample_name}\n')
+
+    with open(f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}.txt', 'w') as f:
+        f.writelines(new_filelist)
 
 if __name__ == '__main__':
-    inference('VCTK_val_reference')
-    inference('VCTK_val_reference_noisy')
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--checkpoint_path', type=str, default='models/checkpoint_550000')
+    parser.add_argument('--outdir', type=str, default='sample')
+    parser.add_argument('--parallel', action='store_true')
+    args = parser.parse_args()
+
+    for dirname in ['VCTK_val_reference', 'VCTK_val_reference_noisy']:
+        if args.parallel:
+            inference_parallel(dirname, args.outdir, args.checkpoint_path)
+        else:
+            inference(dirname, args.outdir, args.checkpoint_path)
