@@ -1,14 +1,11 @@
 import argparse
 import os
-import random
+import json
 from glob import glob
 
 def build_vctk_filelist(path):
-    with open(os.path.join(path, 'speaker-info.txt')) as f:
-        speaker_lines = f.readlines()[1:]
-
-    speakers = [l.split()[0].strip() for l in speaker_lines]
-    speakers = [s for s in speakers if s.startswith('p') or s.startswith('s')]
+    with open(os.path.join(path, 'speaker-dict.json')) as f:
+        speaker_dict = json.load(f)
 
     wavs = glob(os.path.join(path, '**/*.wav'), recursive=True)
     with open('vctk/train.txt', 'r') as f:
@@ -29,7 +26,7 @@ def build_vctk_filelist(path):
         except FileNotFoundError:
             continue
         speaker_id = os.path.basename(wav).split('_')[0].strip()
-        line = f'{os.path.abspath(wav)}|{script}|{speakers.index(speaker_id)}\n'
+        line = f'{os.path.abspath(wav)}|{script}|{speaker_dict[speaker_id]}\n'
 
         wav_name = os.path.splitext(os.path.basename(wav))[0]
         if wav_name in train_list:

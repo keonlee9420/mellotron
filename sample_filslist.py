@@ -1,13 +1,12 @@
 import os
+import json
 from glob import glob
 
 def create_file(filelist, wavdir):
     wavs = glob(os.path.join(wavdir, '*.wav'))
 
-    with open('data/vctk-speaker-info.txt') as f:
-        speaker_lines = f.readlines()[1:]
-
-    speakers = [l.split()[0].strip() for l in speaker_lines]
+    with open('data/VCTK/speaker-dict.json') as f:
+        speaker_dict = json.load(f)
 
     lines = []
     for wav in wavs:
@@ -20,9 +19,9 @@ def create_file(filelist, wavdir):
 
         speaker_id = 0
         if 'vctk' in wav:
-            for spk in speakers:
+            for spk in speaker_dict.keys():
                 if spk in wav:
-                    speaker_id = speakers.index(spk)
+                    speaker_id = speaker_dict[spk]
                     break
 
         line = f'{wav}|{script}|{speaker_id}\n'

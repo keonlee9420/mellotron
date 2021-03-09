@@ -90,6 +90,7 @@ class Evaluator:
 
         numerator = torch.FloatTensor([numerator.sum()])
         denominator = torch.FloatTensor([denominator.sum()])
+        # denominator = torch.FloatTensor([f0_target.shape[0]])
         loss = numerator / (denominator + 1e-9)
         return loss
 
@@ -165,7 +166,6 @@ class Evaluator:
             ref_wav_valid = [r for r in ref_wavs if os.path.splitext(os.path.basename(r))[0] in pred_wav_path]
             assert len(ref_wav_valid) == 1
             ref_wav_path = ref_wav_valid[0]
-            print(pred_wav_path, ref_wav_path)
 
             pred_mel, pred_f0 = self.get_mel_and_f0(pred_wav_path)
             ref_mel, ref_f0 = self.get_mel_and_f0(ref_wav_path)
