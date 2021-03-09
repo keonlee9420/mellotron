@@ -135,7 +135,7 @@ def validate(model, criterion, valset, iteration, batch_size, n_gpus,
 
     model.train()
     if rank == 0:
-        print("Validation loss {}: {:9f}  ".format(iteration, reduced_val_loss))
+        print("Validation loss {}: {:9f}  ".format(iteration, reduced_val_loss), end='\r')
         logger.log_validation(val_loss, model, y, y_pred, iteration)
 
 
@@ -239,7 +239,7 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
             if not is_overflow and rank == 0:
                 duration = time.perf_counter() - start
                 print("Train loss {} {:.6f} Grad Norm {:.6f} {:.2f}s/it".format(
-                    iteration, reduced_loss, grad_norm, duration))
+                    iteration, reduced_loss, grad_norm, duration), end='\r')
                 logger.log_training(
                     reduced_loss, grad_norm, learning_rate, duration, iteration)
 
