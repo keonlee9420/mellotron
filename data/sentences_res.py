@@ -1,0 +1,37 @@
+sentences = [
+        # VCTK
+        "nothing is lost, everything is recycled.",
+        "one mp said he feared the job losses were only the beginning.",
+        "the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.",
+        "the party has never fully recovered.",
+        "the confidence is low, but it is a difficult thing to understand.",
+        "people come into the borders for the beauty of the background. ",
+        "the next eight weeks are critical to us.",
+        "this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.",
+        "all businesses continue to trade.",
+        "this is a milestone in the modernisation of the scottish prosecution service.",
+        "we also need a small plastic snake and a big toy frog for the kids.",
+        "i had relied on him. ",
+
+        # NonParallelRefs
+        # "dogs are sitting by the door!",
+        # "matthew cuthbert is surprised",
+        # "has never been surpassed.",
+        # "in being comparatively modern.",
+        # "ambitious hopes, which had seemed to be extinguished, revived in his bosom.",
+        # "after a pause bechamel went back to the dining room.",
+        "Now it was finished - that is to say the design - she must stitch it together .",
+        # "when we first met here we were younger than our girls are now.",
+        # "oh my god, he's lost it. he's totally lost it.",
+        # "you must know said margolotte when they were all seated together on the broad window seat that my husband foolishly gave away all the powder of life he first made to old mombi the witch who used to live in the country of the gillikins to the north of here.",
+        # "And it is worth mention in passing that, as an example of fine typography,",
+        # "Printing, then, for our purpose, may be considered as the art of making books by means of movable types.",
+        # "Printing, in the only sense with which we are at present concerned, differs from most if not from all the arts and crafts represented in the Exhibition",
+        # "Advanced text to speech models such as Fast Speech can synthesize speech significantly faster than previous auto regressive models with comparable quality. The training of Fast Speech model relies on an auto regressive teacher model for duration prediction and knowledge distillation, which can ease the one to many mapping problem in T T S. However, Fast Speech has several disadvantages, 1, the teacher student distillation pipeline is complicated, 2, the duration extracted from the teacher model is not accurate enough, and the target mel spectrograms distilled from teacher model suffer from information loss due to data simplification, both of which limit the voice quality.",
+        # "in the aftermath of this storm, we were thrown back to the east. away went any hope of",
+        # "For although the Chinese took impressions from wood blocks engraved in relief for centuries before the woodcutters of the Netherlands, by a similar process",
+        # "produced the block books, which were the immediate predecessors of the true printed book,",
+        # "the invention of movable metal letters in the middle of the fifteenth century may justly be considered as the invention of the art of printing.",
+        # "the earliest book printed with movable types, the Gutenberg, or \"forty-two line Bible\" of about 1455,",
+        # "Now, as all books not primarily intended as picture-books consist principally of types composed to form letterpress,"
+    ]

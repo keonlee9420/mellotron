@@ -1,5 +1,8 @@
 from math import sqrt
 import numpy as np
+import glob
+import json
+import os
 from numpy import finfo
 import torch
 from torch.autograd import Variable
@@ -566,6 +569,20 @@ class Tacotron2(nn.Module):
         self.speaker_embedding = nn.Embedding(
             hparams.n_speakers, hparams.speaker_embedding_dim)
 
+        if hparams.pretrained_speaker:
+            with open('data/VCTK/speaker-dict.json') as f:
+                speakers = json.load(f)
+            embed_paths = glob.glob(os.path.join(hparams.pretrained_speaker_path, '*.npy'))
+            embeds = np.zeros((hparams.n_speakers, 1, 512))
+            for embed_path in embed_paths:
+                speaker_id = embed_path.split('spker_embed-')[1][:-4]
+                embed = np.load(embed_path)
+                embeds[speakers[speaker_id], :, :] = embed
+            embeddings = torch.tensor(embeds, dtype=torch.float32)
+            self.register_buffer('pretrained_speaker', embeddings)
+            self.speaker_linear = nn.Sequential(nn.Linear(512, hparams.speaker_embedding_dim), nn.ReLU())
+
+
     def parse_batch(self, batch):
         text_padded, input_lengths, mel_padded, gate_padded, \
             output_lengths, speaker_ids, f0_padded = batch
@@ -600,7 +617,11 @@ class Tacotron2(nn.Module):
 
         embedded_inputs = self.embedding(inputs).transpose(1, 2)
         embedded_text = self.encoder(embedded_inputs, input_lengths)
-        embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
+        if hasattr(self, 'pretrained_speaker'):
+            embedded_speakers = self.pretrained_speaker[speaker_ids]
+            embedded_speakers = self.speaker_linear(embedded_speakers)
+        else:
+            embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
         embedded_gst = self.gst(targets, output_lengths)
         embedded_gst = embedded_gst.repeat(1, embedded_text.size(1), 1)
         embedded_speakers = embedded_speakers.repeat(1, embedded_text.size(1), 1)
@@ -622,7 +643,12 @@ class Tacotron2(nn.Module):
         text, style_input, speaker_ids, f0s = inputs
         embedded_inputs = self.embedding(text).transpose(1, 2)
         embedded_text = self.encoder.inference(embedded_inputs)
-        embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
+        if hasattr(self, 'pretrained_speaker'):
+            embedded_speakers = self.pretrained_speaker[speaker_ids]
+            embedded_speakers = self.speaker_linear(embedded_speakers)
+        else:
+            embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
+        print(embedded_speakers.size())
         if hasattr(self, 'gst'):
             if isinstance(style_input, int):
                 query = torch.zeros(1, 1, self.gst.encoder.ref_enc_gru_size).cuda()
@@ -654,7 +680,11 @@ class Tacotron2(nn.Module):
         text, style_input, speaker_ids, f0s, attention_map = inputs
         embedded_inputs = self.embedding(text).transpose(1, 2)
         embedded_text = self.encoder.inference(embedded_inputs)
-        embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
+        if hasattr(self, 'pretrained_speaker'):
+            embedded_speakers = self.pretrained_speaker[speaker_ids]
+            embedded_speakers = self.speaker_linear(embedded_speakers)
+        else:
+            embedded_speakers = self.speaker_embedding(speaker_ids)[:, None]
         if hasattr(self, 'gst'):
             if isinstance(style_input, int):
                 query = torch.zeros(1, 1, self.gst.encoder.ref_enc_gru_size).cuda()

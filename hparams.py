@@ -19,7 +19,8 @@ def create_hparams(hparams_string=None, verbose=False):
         dist_url="tcp://localhost:54321",
         cudnn_enabled=True,
         cudnn_benchmark=False,
-        ignore_layers=['speaker_embedding.weight', 'speaker_embedding.bias'],
+        ignore_layers=['speaker_embedding.weight', 'speaker_embedding.bias',
+                       'speaker_linear.0.weight', 'speaker_linear.0.bias', 'pretrained_speaker'],
 
         ################################
         # Data Parameters             #
@@ -87,6 +88,8 @@ def create_hparams(hparams_string=None, verbose=False):
         # Speaker embedding
         n_speakers=123,
         speaker_embedding_dim=128,
+        pretrained_speaker=True,
+        pretrained_speaker_path='/mnt/keon/spker_embed', #'data/spker_embed'
 
         # Reference encoder
         with_gst=True,

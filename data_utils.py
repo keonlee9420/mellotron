@@ -42,7 +42,7 @@ class TextMelLoader(torch.utils.data.Dataset):
         self.speaker_ids = speaker_ids
         if speaker_ids is None:
             self.speaker_ids = self.create_speaker_lookup_table(self.audiopaths_and_text)
-        print(self.speaker_ids)
+        # print(self.speaker_ids)
 
         random.seed(1234)
         random.shuffle(self.audiopaths_and_text)
@@ -71,7 +71,8 @@ class TextMelLoader(torch.utils.data.Dataset):
         return (text, mel, speaker_id, f0)
 
     def get_speaker_id(self, speaker_id):
-        return torch.IntTensor([self.speaker_ids[int(speaker_id)]])
+        # return torch.IntTensor([self.speaker_ids[int(speaker_id)]])
+        return torch.IntTensor([int(speaker_id)])
 
     def get_mel_and_f0(self, filepath):
         audio, sampling_rate = load_wav_to_torch(filepath)
