@@ -22,7 +22,7 @@ stft = TacotronSTFT(hparams.filter_length, hparams.hop_length, hparams.win_lengt
                     hparams.n_mel_channels, hparams.sampling_rate, hparams.mel_fmin,
                     hparams.mel_fmax)
 
-VOCODER = 'MelGAN'
+VOCODER = 'hifigan'
 
 # New trained version
 speaker_id_map = {
@@ -76,8 +76,16 @@ def get_vocoder():
         vocoder.mel2wav.eval()
         vocoder.mel2wav.cuda()
     elif VOCODER == "WaveGlow":
-        waveglow_path = 'models/waveglow_256channels_universal_v4.pt'
-        vocoder = torch.load(waveglow_path)['model'].cuda().eval()
+        # waveglow_path = 'models/waveglow_256channels_universal_v4.pt'
+        # vocoder = torch.load(waveglow_path)['model'].cuda().eval()
+        vocoder = torch.hub.load(
+            'nvidia/DeepLearningExamples:torchhub', 'nvidia_waveglow')
+        vocoder = vocoder.remove_weightnorm(vocoder)
+        vocoder.eval()
+        for m in vocoder.modules():
+            if 'Conv' in str(type(m)):
+                setattr(m, 'padding_mode', 'zeros')
+        vocoder.cuda()
     else:
         with open("hifigan/config.json", "r") as f:
             config = json.load(f)
