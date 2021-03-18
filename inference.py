@@ -12,13 +12,17 @@ from model import load_model
 from layers import TacotronSTFT
 from data_utils import TextMelLoader, TextMelCollate
 from text import cmudict, text_to_sequence
-from data.sentences import sentences
+from data.sentences_res import sentences
+from data.sentences_seen import sentences_seen
+from data.sentences_unseen import sentences_unseen
 
 hparams = create_hparams()
 
 stft = TacotronSTFT(hparams.filter_length, hparams.hop_length, hparams.win_length,
                     hparams.n_mel_channels, hparams.sampling_rate, hparams.mel_fmin,
                     hparams.mel_fmax)
+
+VOCODER = 'MelGAN'
 
 # New trained version
 speaker_id_map = {
@@ -65,21 +69,31 @@ def load_mel(path):
     return melspec
 
 def get_vocoder():
-    with open("hifigan/config.json", "r") as f:
-        config = json.load(f)
-    config = hifigan.AttrDict(config)
-    vocoder = hifigan.Generator(config)
-    ckpt = torch.load("hifigan/generator_universal.pth.tar")
-    vocoder.load_state_dict(ckpt["generator"])
-    vocoder.eval()
-    vocoder.remove_weight_norm()
-    vocoder.cuda()
+    if VOCODER == 'MelGAN':
+        vocoder = torch.hub.load(
+            "descriptinc/melgan-neurips", "load_melgan", "multi_speaker"
+        )
+        vocoder.mel2wav.eval()
+        vocoder.mel2wav.cuda()
+    else:
+        with open("hifigan/config.json", "r") as f:
+            config = json.load(f)
+        config = hifigan.AttrDict(config)
+        vocoder = hifigan.Generator(config)
+        ckpt = torch.load("hifigan/generator_universal.pth.tar")
+        vocoder.load_state_dict(ckpt["generator"])
+        vocoder.eval()
+        vocoder.remove_weight_norm()
+        vocoder.cuda()
 
     return vocoder
 
 
 def vocoder_infer(mel, vocoder, path):
-    wav = vocoder(mel).squeeze(1)
+    if VOCODER == "MelGAN":
+        wav = vocoder.inverse(mel / np.log(10))
+    else:
+        wav = vocoder(mel).squeeze(1)
 
     wav = (
         wav.squeeze().cpu().numpy()
@@ -91,7 +105,7 @@ def vocoder_infer(mel, vocoder, path):
     return wav
 
 
-def inference(dirname, outdir, checkpoint_path, parallel=False):
+def inference(dirname, outdir, checkpoint_path, sentence_list, parallel=False):
     # 멜로트론 로딩
     mellotron = load_model(hparams).cuda().eval()
     mellotron.load_state_dict(torch.load(checkpoint_path)['state_dict'])
@@ -114,7 +128,7 @@ def inference(dirname, outdir, checkpoint_path, parallel=False):
     for file_idx in range(len(dataloader)):
         audio_path, text, sid = dataloader.audiopaths_and_text[file_idx]
         if not parallel:
-            for sent_txt in sentences:
+            for sent_txt in sentence_list:
                 text = sent_txt
 
                 # get audio path, encoded text, pitch contour and mel for gst
@@ -127,8 +141,8 @@ def inference(dirname, outdir, checkpoint_path, parallel=False):
                 # speaker_name = os.path.basename(audio_path).split('_')[1]
                 # speaker_id = speakers.index(speaker_name)
                 speaker_id = int(sid)
-                speaker_id_mapped = speaker_id_map[speaker_id]
-                speaker_id = torch.LongTensor([speaker_id_mapped]).cuda()
+                # speaker_id_mapped = speaker_id_map[speaker_id]
+                speaker_id = torch.LongTensor([speaker_id]).cuda()
 
                 # 멜로트론 합성
                 with torch.no_grad():
@@ -136,7 +150,7 @@ def inference(dirname, outdir, checkpoint_path, parallel=False):
                         (text_encoded, mel, speaker_id, pitch_contour))
 
                     # wav 합성
-                    text_save = text[:10] if len(text) > 10 else text
+                    text_save = text[:100] if len(text) > 100 else text
                     sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text_save}.wav'
                     vocoder_infer(mel_outputs_postnet, vocoder,
                                   f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}/{sample_name}')
@@ -174,7 +188,7 @@ def inference(dirname, outdir, checkpoint_path, parallel=False):
     with open(f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}.txt', 'w') as f:
         f.writelines(new_filelist)
     t1 = time.time()
-    print(f'Average inference time: {t1 - t0:.6f}')
+    print(f'Average inference time: {(t1 - t0) / cnt:.6f}')
 
 if __name__ == '__main__':
     import argparse
@@ -184,5 +198,9 @@ if __name__ == '__main__':
     parser.add_argument('--parallel', action='store_true')
     args = parser.parse_args()
 
-    for dirname in ['VCTK_val_reference', 'VCTK_val_reference_noisy']:
-        inference(dirname, args.outdir, args.checkpoint_path, args.parallel)
+    for dirname in ['VCTK_seen_reference', 'VCTK_unseen_reference']:
+        if dirname == 'VCTK_seen_reference':
+            sentence_list = sentences_seen
+        else:
+            sentence_list = sentences_unseen
+        inference(dirname, args.outdir, args.checkpoint_path, sentence_list, args.parallel)
