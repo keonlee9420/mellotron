@@ -1,23 +1,23 @@
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_169_mic1.wav|having guidelines in advance is helpful.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_345_mic1.wav|another high street retailer was not so lucky.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_148_mic1.wav|people have been placed in a state of alarm.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_225_mic1.wav|finding suitable replacements would not be easy.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_038_mic1.wav|how do you take them away?|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_324_mic1.wav|it particularly increases under-age drinking, he claimed.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_189_mic1.wav|millions of british jobs depend on europe.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_368_mic1.wav|corporate banking would be based in edinburgh.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_012_mic1.wav|throughout the centuries people have explained the rainbow in various ways.|13
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_395_mic1.wav|he already had had complaints.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_169_mic1.wav|connell was standing there, ordering her to get up.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_337_mic1.wav|he wasn't really doing anything, so he wanted out.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_366_mic1.wav|as long as it is possible, we will keep going.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_298_mic1.wav|both were later released after a check-up.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_410_mic1.wav|millions of british jobs depend on europe.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_389_mic1.wav|i did not concentrate on my performance.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_229_mic1.wav|that period was a struggle.|87
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_085_mic1.wav|yesterday, he continued to keep a low profile.|58
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_255_mic1.wav|it will now relate to all public bodies in scotland.|58
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_364_mic1.wav|the final decision was between scotland and the republic of ireland.|58
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_389_mic1.wav|it will take place in july.|52
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_258_mic1.wav|blair is very positive at european councils.|52
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_016_mic1.wav|the norsemen considered the rainbow as a bridge over which the gods passed from the earth to their homes in the sky.|52
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_169_mic1.wav|having guidelines in advance is helpful.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_345_mic1.wav|another high street retailer was not so lucky.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_148_mic1.wav|people have been placed in a state of alarm.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_225_mic1.wav|finding suitable replacements would not be easy.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_038_mic1.wav|how do you take them away?|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_324_mic1.wav|it particularly increases under-age drinking, he claimed.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_189_mic1.wav|millions of british jobs depend on europe.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_368_mic1.wav|corporate banking would be based in edinburgh.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p239/p239_012_mic1.wav|throughout the centuries people have explained the rainbow in various ways.|13
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_395_mic1.wav|he already had had complaints.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_169_mic1.wav|connell was standing there, ordering her to get up.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_337_mic1.wav|he wasn't really doing anything, so he wanted out.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_366_mic1.wav|as long as it is possible, we will keep going.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_298_mic1.wav|both were later released after a check-up.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_410_mic1.wav|millions of british jobs depend on europe.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_389_mic1.wav|i did not concentrate on my performance.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p323/p323_229_mic1.wav|that period was a struggle.|87
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_085_mic1.wav|yesterday, he continued to keep a low profile.|58
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_255_mic1.wav|it will now relate to all public bodies in scotland.|58
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p285/p285_364_mic1.wav|the final decision was between scotland and the republic of ireland.|58
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_389_mic1.wav|it will take place in july.|52
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_258_mic1.wav|blair is very positive at european councils.|52
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p279/p279_016_mic1.wav|the norsemen considered the rainbow as a bridge over which the gods passed from the earth to their homes in the sky.|52

@@ -89,7 +89,7 @@ def create_hparams(hparams_string=None, verbose=False):
         n_speakers=123,
         speaker_embedding_dim=128,
         pretrained_speaker=True,
-        pretrained_speaker_path='/mnt/keon/spker_embed', #'data/spker_embed'
+        pretrained_speaker_path='/ssd2/FastStyle/preprocessed/VCTK/spker_embed', #'data/spker_embed'
 
         # Reference encoder
         with_gst=True,

@@ -1,12 +1,12 @@
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p264/p264_172_mic1.wav|i'm taking each day as it comes.|37
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p250/p250_133_mic1.wav|this is a milestone in the modernisation of the scottish prosecution service.|23
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p261/p261_002_mic1.wav|ask her to bring these things with her from the store.|34
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p234/p234_024_mic1.wav|this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.|9
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p248/p248_130_mic1.wav|i had relied on him.|21
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p297/p297_004_mic1.wav|we also need a small plastic snake and a big toy frog for the kids.|66
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p259/p259_284_mic1.wav|it makes no difference to their friendship.|32
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p247/p247_234_mic1.wav|murray financial has fallen at the first hurdle.|20
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p263/p263_157_mic1.wav|drugs are used a lot at the fishing, not just cannabis.|36
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p226/p226_021_mic1.wav|the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.|1
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p251/p251_028_mic1.wav|people come into the borders for the beauty of the background.|24
-/home/kyumin/Development/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p298/p298_238_mic1.wav|nothing is lost, everything is recycled.|67
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p264/p264_172_mic1.wav|i'm taking each day as it comes.|37
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p250/p250_133_mic1.wav|this is a milestone in the modernisation of the scottish prosecution service.|23
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p261/p261_002_mic1.wav|ask her to bring these things with her from the store.|34
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p234/p234_024_mic1.wav|this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.|9
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p248/p248_130_mic1.wav|i had relied on him.|21
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p297/p297_004_mic1.wav|we also need a small plastic snake and a big toy frog for the kids.|66
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p259/p259_284_mic1.wav|it makes no difference to their friendship.|32
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p247/p247_234_mic1.wav|murray financial has fallen at the first hurdle.|20
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p263/p263_157_mic1.wav|drugs are used a lot at the fishing, not just cannabis.|36
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p226/p226_021_mic1.wav|the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.|1
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p251/p251_028_mic1.wav|people come into the borders for the beauty of the background.|24
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p298/p298_238_mic1.wav|nothing is lost, everything is recycled.|67

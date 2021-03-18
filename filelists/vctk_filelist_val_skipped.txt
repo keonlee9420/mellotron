@@ -1,0 +1,89 @@
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p268/p268_010_mic1.wav|people look, but no one ever finds it.|41
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p298/p298_238_mic1.wav|nothing is lost, everything is recycled.|67
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p270/p270_305_mic1.wav|it could well be military.|43
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p261/p261_002_mic1.wav|ask her to bring these things with her from the store.|34
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p266/p266_036_mic1.wav|a quality audit officer has also been appointed.|39
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p311/p311_094_mic1.wav|the party has never fully recovered.|79
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p271/p271_356_mic1.wav|we will be homeless.|44
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p362/p362_050_mic1.wav|but this was refused.|104
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p326/p326_162_mic1.wav|how do you find the youngsters?|88
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p234/p234_024_mic1.wav|this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.|9
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p292/p292_191_mic1.wav|i have nothing to hide.|62
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p335/p335_178_mic1.wav|market research indicates that this is not feasible.|93
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p248/p248_130_mic1.wav|i had relied on him.|21
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p287/p287_405_mic1.wav|it's too close to call.|60
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p232/p232_307_mic1.wav|the confidence is low, but it is a difficult thing to understand.|7
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p238/p238_036_mic1.wav|let there be no doubt about that.|12
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p308/p308_106_mic1.wav|but that attachment took a lot of growing.|77
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p304/p304_038_mic1.wav|at half-time you have?|73
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p257/p257_390_mic1.wav|there was no trouble.|30
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p318/p318_314_mic1.wav|but they had to be paid for.|86
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p255/p255_115_mic1.wav|i joined a group.|28
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p246/p246_207_mic1.wav|my neighbours are horrified.|19
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p274/p274_169_mic1.wav|you have got to get people from all sorts of different directions.|47
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p316/p316_132_mic1.wav|now, however, things are different.|84
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p314/p314_005_mic1.wav|she can scoop these things into three red bags, and we will go meet her wednesday at the train station.|82
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p333/p333_300_mic1.wav|i know you went back this morning.|91
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p259/p259_284_mic1.wav|it makes no difference to their friendship.|32
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p345/p345_186_mic1.wav|you have a plan?|99
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p329/p329_067_mic1.wav|the commons is too outdated.|89
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p264/p264_172_mic1.wav|i'm taking each day as it comes.|37
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p247/p247_234_mic1.wav|murray financial has fallen at the first hurdle.|20
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p360/p360_362_mic1.wav|it's something he has worked very hard on.|102
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p283/p283_067_mic1.wav|this is the year of the tiger.|56
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p260/p260_205_mic1.wav|so far, the scheme has not been used in scotland.|33
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p249/p249_163_mic1.wav|they should stop the bombing.|22
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p225/p225_240_mic1.wav|we are in the hat.|0
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p363/p363_111_mic1.wav|we are making no comment.|105
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p374/p374_001_mic1.wav|please call stella.|107
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p241/p241_058_mic1.wav|i was an athlete.|15
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p275/p275_140_mic1.wav|we are currently consulting with a wide range of interested parties.|48
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p305/p305_128_mic1.wav|who is the employer?|74
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p278/p278_123_mic1.wav|however, the problem is the timing.|51
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p339/p339_419_mic1.wav|we should have been rewarded for producing.|95
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p286/p286_238_mic1.wav|it was a miserable afternoon in fife.|59
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p300/p300_372_mic1.wav|if he saw somebody in trouble, he would try to help.|69
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p252/p252_102_mic1.wav|they had three children.|25
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p282/p282_262_mic1.wav|he claimed his insurance company contested the damages, not the restaurant.|55
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p334/p334_176_mic1.wav|but we have come under attack.|92
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p347/p347_224_mic1.wav|you can never tell.|100
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p262/p262_183_mic1.wav|they need to look after themselves.|35
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p227/p227_399_mic1.wav|how do you take them away?|2
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p313/p313_411_mic1.wav|the next eight weeks are critical to us.|81
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p281/p281_283_mic1.wav|i realised i was lucky to have it.|54
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p253/p253_176_mic1.wav|as we worked.|26
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p228/p228_151_mic1.wav|that should do it.|3
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p295/p295_359_mic1.wav|you are always aware of the injury potential.|65
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/s5/s5_060_mic1.wav|i saw the story, but that amount wouldn't even pay my commission.|109
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p251/p251_028_mic1.wav|people come into the borders for the beauty of the background.|24
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p272/p272_251_mic1.wav|souter will be back.|45
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p288/p288_234_mic1.wav|and a film maker was born.|61
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p250/p250_133_mic1.wav|this is a milestone in the modernisation of the scottish prosecution service.|23
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p226/p226_021_mic1.wav|the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.|1
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p254/p254_278_mic1.wav|she has fallen in love with scotland, however.|27
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p233/p233_045_mic1.wav|all businesses continue to trade.|8
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p276/p276_283_mic1.wav|i've come here for the jersey.|49
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p302/p302_068_mic1.wav|you thought it was a headache.|71
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p230/p230_124_mic1.wav|she was also very brave.|5
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p376/p376_384_mic1.wav|the attitude was good today.|108
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p265/p265_121_mic1.wav|what will happen then?|38
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p312/p312_340_mic1.wav|we're delighted and we certainly deserved it.|80
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p306/p306_128_mic1.wav|she says the royal family get on well.|75
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p293/p293_262_mic1.wav|the commons is too outdated.|63
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p240/p240_106_mic1.wav|getting new people interested in this music is the real reward.|14
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p297/p297_004_mic1.wav|we also need a small plastic snake and a big toy frog for the kids.|66
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p231/p231_236_mic1.wav|sadly, it sounds as if it is.|6
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p263/p263_157_mic1.wav|drugs are used a lot at the fishing, not just cannabis.|36
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p256/p256_122_mic1.wav|that was the lesson to be learned from the european championships.|29
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p243/p243_347_mic1.wav|and the top prize draw award is certainly impressive.|16
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p364/p364_201_mic1.wav|our destiny is in our own hands.|106
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p299/p299_342_mic1.wav|the urgency is real.|68
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p237/p237_274_mic1.wav|one mp said he feared the job losses were only the beginning.|11
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p277/p277_231_mic1.wav|attendance at the project is a condition of a probation order.|50
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p244/p244_102_mic1.wav|he liked the weather, the courses, the food.|17
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p258/p258_264_mic1.wav|it is also very valuable.|31
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p307/p307_335_mic1.wav|there was no let-up for the minnows.|76
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p245/p245_295_mic1.wav|nothing is safe.|18
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p341/p341_398_mic1.wav|we've still got a say in this.|97
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p284/p284_349_mic1.wav|yet, for my money, he was not the man of the match.|57
+/home/keon/kyumin-experiment/mellotron/data/VCTK/wav48_silence_trimmed_resampled_mic1/p273/p273_048_mic1.wav|i must take a seat.|46
