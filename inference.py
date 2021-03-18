@@ -75,6 +75,9 @@ def get_vocoder():
         )
         vocoder.mel2wav.eval()
         vocoder.mel2wav.cuda()
+    elif VOCODER == "WaveGlow":
+        waveglow_path = 'models/waveglow_256channels_universal_v4.pt'
+        vocoder = torch.load(waveglow_path)['model'].cuda().eval()
     else:
         with open("hifigan/config.json", "r") as f:
             config = json.load(f)
@@ -92,6 +95,8 @@ def get_vocoder():
 def vocoder_infer(mel, vocoder, path):
     if VOCODER == "MelGAN":
         wav = vocoder.inverse(mel / np.log(10))
+    elif VOCODER == "WaveGlow":
+        wav = vocoder.infer(mel, sigma=0.8)
     else:
         wav = vocoder(mel).squeeze(1)
 
