@@ -20,7 +20,7 @@ sentences = [
         # "in being comparatively modern.",
         # "ambitious hopes, which had seemed to be extinguished, revived in his bosom.",
         # "after a pause bechamel went back to the dining room.",
-        "Now it was finished - that is to say the design - she must stitch it together .",
+        # "Now it was finished - that is to say the design - she must stitch it together .",
         # "when we first met here we were younger than our girls are now.",
         # "oh my god, he's lost it. he's totally lost it.",
         # "you must know said margolotte when they were all seated together on the broad window seat that my husband foolishly gave away all the powder of life he first made to old mombi the witch who used to live in the country of the gillikins to the north of here.",

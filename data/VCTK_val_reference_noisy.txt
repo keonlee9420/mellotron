@@ -1,12 +1,12 @@
-data/VCTK_val_reference_noisy/M_p298_238_mic1.wav|nothing is lost, everything is recycled.|100067
-data/VCTK_val_reference_noisy/M_p237_274_mic1.wav|one mp said he feared the job losses were only the beginning.|100011
-data/VCTK_val_reference_noisy/M_p226_021_mic1.wav|the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.|100001
-data/VCTK_val_reference_noisy/M_p311_094_mic1.wav|the party has never fully recovered.|100079
-data/VCTK_val_reference_noisy/M_p232_307_mic1.wav|the confidence is low, but it is a difficult thing to understand.|100007
-data/VCTK_val_reference_noisy/M_p251_028_mic1.wav|people come into the borders for the beauty of the background.|100024
-data/VCTK_val_reference_noisy/F_p313_411_mic1.wav|the next eight weeks are critical to us.|100081
-data/VCTK_val_reference_noisy/F_p234_024_mic1.wav|this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.|100009
-data/VCTK_val_reference_noisy/F_p233_045_mic1.wav|all businesses continue to trade.|100008
-data/VCTK_val_reference_noisy/F_p250_133_mic1.wav|this is a milestone in the modernisation of the scottish prosecution service.|100023
-data/VCTK_val_reference_noisy/F_p297_004_mic1.wav|we also need a small plastic snake and a big toy frog for the kids.|100066
-data/VCTK_val_reference_noisy/F_p248_130_mic1.wav|i had relied on him.|100021
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p298_238_mic1.wav|nothing is lost, everything is recycled.|67
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p237_274_mic1.wav|one mp said he feared the job losses were only the beginning.|11
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p226_021_mic1.wav|the difference in the rainbow depends considerably upon the size of the drops, and the width of the colored band increases as the size of the drops increases.|1
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p311_094_mic1.wav|the party has never fully recovered.|79
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p232_307_mic1.wav|the confidence is low, but it is a difficult thing to understand.|7
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/M_p251_028_mic1.wav|people come into the borders for the beauty of the background.|24
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p313_411_mic1.wav|the next eight weeks are critical to us.|81
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p234_024_mic1.wav|this is a very common type of bow, one showing mainly red and yellow, with little or no green or blue.|9
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p233_045_mic1.wav|all businesses continue to trade.|8
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p250_133_mic1.wav|this is a milestone in the modernisation of the scottish prosecution service.|23
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p297_004_mic1.wav|we also need a small plastic snake and a big toy frog for the kids.|66
+/home/keon/speech-datasets/references/VCTK_val_reference_noisy/F_p248_130_mic1.wav|i had relied on him.|21

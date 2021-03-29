@@ -10,7 +10,7 @@ def create_hparams(hparams_string=None, verbose=False):
         # Experiment Parameters        #
         ################################
         epochs=500000,
-        iters_per_checkpoint=500,
+        iters_per_checkpoint=1000,
         seed=1234,
         dynamic_loss_scaling=True,
         fp16_run=False,
@@ -19,8 +19,7 @@ def create_hparams(hparams_string=None, verbose=False):
         dist_url="tcp://localhost:54321",
         cudnn_enabled=True,
         cudnn_benchmark=False,
-        ignore_layers=['speaker_embedding.weight', 'speaker_embedding.bias',
-                       'speaker_linear.0.weight', 'speaker_linear.0.bias', 'pretrained_speaker'],
+        ignore_layers=[],
 
         ################################
         # Data Parameters             #
@@ -108,7 +107,7 @@ def create_hparams(hparams_string=None, verbose=False):
         # Optimization Hyperparameters #
         ################################
         use_saved_learning_rate=False,
-        learning_rate=1e-3,
+        learning_rate=1.25e-5,
         learning_rate_min=1e-5,
         learning_rate_anneal=50000,
         weight_decay=1e-6,

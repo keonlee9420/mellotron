@@ -136,7 +136,7 @@ def inference(dirname, outdir, checkpoint_path, sentence_list, parallel=False):
         speakers = json.load(f)
 
     new_filelist = []
-    t0 = time.time()
+    total_time = 0
     cnt = 0
     for file_idx in range(len(dataloader)):
         audio_path, text, sid = dataloader.audiopaths_and_text[file_idx]
@@ -159,9 +159,11 @@ def inference(dirname, outdir, checkpoint_path, sentence_list, parallel=False):
 
                 # 멜로트론 합성
                 with torch.no_grad():
+                    t0 = time.time()
                     mel_outputs, mel_outputs_postnet, gate_outputs, _ = mellotron.inference(
                         (text_encoded, mel, speaker_id, pitch_contour))
-
+                    t1 = time.time()
+                    total_time += t1-t0
                     # wav 합성
                     text_save = text[:100] if len(text) > 100 else text
                     sample_name = f'{os.path.splitext(os.path.basename(audio_path))[0]}-{text_save}.wav'
@@ -200,8 +202,7 @@ def inference(dirname, outdir, checkpoint_path, sentence_list, parallel=False):
 
     with open(f'{outdir}/{os.path.basename(checkpoint_path)}/{dirname}.txt', 'w') as f:
         f.writelines(new_filelist)
-    t1 = time.time()
-    print(f'Average inference time: {(t1 - t0) / cnt:.6f}')
+    print(f'Average inference time: {(total_time) / cnt:.6f}')
 
 if __name__ == '__main__':
     import argparse
@@ -211,8 +212,8 @@ if __name__ == '__main__':
     parser.add_argument('--parallel', action='store_true')
     args = parser.parse_args()
 
-    for dirname in ['VCTK_seen_reference', 'VCTK_unseen_reference']:
-        if dirname == 'VCTK_seen_reference':
+    for dirname in ['VCTK_seen_reference', "VCTK_unseen_reference", "VCTK_val_reference_noisy"]: #, 'VCTK_unseen_reference', 'VCTK_val_reference_noisy']:
+        if dirname in ['VCTK_seen_reference', 'VCTK_val_reference_noisy']:
             sentence_list = sentences_seen
         else:
             sentence_list = sentences_unseen

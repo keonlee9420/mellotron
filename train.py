@@ -195,6 +195,8 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
 
     print(f'Model Parameters: {get_param_num(model)}')
 
+    total_time = 0
+    cnt = 0
     model.train()
     is_overflow = False
     # ================ MAIN TRAINNIG LOOP! ===================
@@ -203,6 +205,8 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
         if train_sampler is not None:
             train_sampler.set_epoch(epoch)
         for i, batch in enumerate(train_loader):
+            cnt += 1
+            t0 = time.time()
             start = time.perf_counter()
             if iteration > 0 and iteration % hparams.learning_rate_anneal == 0:
                 learning_rate = max(
@@ -235,13 +239,16 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
                     model.parameters(), hparams.grad_clip_thresh)
 
             optimizer.step()
+            t1 = time.time()
+            total_time += t1-t0
+            print(f"Averaged Taining Time (1step, without logging): {(total_time) / cnt:.6f}s")
 
             if not is_overflow and rank == 0:
                 duration = time.perf_counter() - start
                 print("Train loss {} {:.6f} Grad Norm {:.6f} {:.2f}s/it".format(
                     iteration, reduced_loss, grad_norm, duration), end='\r')
-                logger.log_training(
-                    reduced_loss, grad_norm, learning_rate, duration, iteration)
+                # logger.log_training(
+                #     reduced_loss, grad_norm, learning_rate, duration, iteration)
 
             if not is_overflow and (iteration % hparams.iters_per_checkpoint == 0):
                 validate(model, criterion, valset, iteration,
@@ -250,8 +257,8 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
                 if rank == 0:
                     checkpoint_path = os.path.join(
                         output_directory, "checkpoint_{}".format(iteration))
-                    save_checkpoint(model, optimizer, learning_rate, iteration,
-                                    checkpoint_path)
+                    # save_checkpoint(model, optimizer, learning_rate, iteration,
+                    #                 checkpoint_path)
 
             iteration += 1
 
