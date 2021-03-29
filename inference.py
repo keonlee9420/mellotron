@@ -205,6 +205,9 @@ def inference(dirname, outdir, checkpoint_path, sentence_list, parallel=False):
     print(f'Average inference time: {(total_time) / cnt:.6f}')
 
 if __name__ == '__main__':
+    """
+    CUDA_VISIBLE_DEVICES=0 python inference.py --checkpoint_path /ssd2/pretrained_models/mellotron_ckpts/mellotron_outdir_lr5e-5_nopreamp/checkpoint_150000 --outdir results
+    """
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint_path', type=str, default='models/checkpoint_550000')
